@@ -1,73 +1,248 @@
-# Welcome to your Lovable project
+AUTO-ML-AGENT
 
-## Project info
+A Multi-Stage Agent-Based Framework for End-to-End Machine Learning Automation
 
-**URL**: https://lovable.dev/projects/2193507e-9459-42c9-a1db-f42316bad72c
+⸻
 
-## How can I edit this code?
+📌 Project Overview
 
-There are several ways of editing your application.
+AUTO-ML-AGENT is an agent-driven framework designed to automate the entire machine learning pipeline, from user intent understanding to deployable model generation.
+The system follows a multi-agent, multi-stage architecture that emphasizes verification, planning, execution, and validation at every step.
 
-**Use Lovable**
+This project focuses on automation, correctness, and reproducibility rather than manual ML experimentation.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2193507e-9459-42c9-a1db-f42316bad72c) and start prompting.
+⸻
 
-Changes made via Lovable will be committed automatically to this repo.
+🎯 Problem Statement
 
-**Use your preferred IDE**
+Traditional AutoML systems:
+	•	Rely heavily on predefined pipelines
+	•	Lack reasoning and verification
+	•	Fail silently when requirements are ambiguous
+	•	Do not adapt dynamically to constraints
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+AUTO-ML-AGENT addresses these issues by introducing:
+	•	Agent-based task decomposition
+	•	Retrieval-augmented planning
+	•	Multi-stage verification
+	•	Training-free model search and optimization
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+⸻
 
-Follow these steps:
+🧠 System Architecture (High-Level)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+The system is divided into four major phases:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Initialization
+2. Planning
+3. Execution
+4. Multi-Stage Verification
 
-# Step 3: Install the necessary dependencies.
-npm i
+Each phase is handled by specialized agents that communicate through structured representations.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+⸻
 
-**Edit a file directly in GitHub**
+1️⃣ Initialization Phase
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+User Input
 
-**Use GitHub Codespaces**
+The system starts with a natural language user prompt, which may include:
+	•	Task description
+	•	Constraints
+	•	Performance requirements
+	•	Deployment expectations
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Agent Manager
+	•	Acts as the controller
+	•	Coordinates agents
+	•	Handles failures and retries
+	•	Rejects invalid or ambiguous requests
 
-## What technologies are used for this project?
+Request Verification
 
-This project is built with:
+Before any processing:
+	•	Input is validated
+	•	Missing or conflicting constraints are detected
+	•	Invalid requests are rejected early
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+✅ Pass → Planning Phase
+❌ Fail → User Feedback Loop
 
-## How can I deploy this project?
+⸻
 
-Simply open [Lovable](https://lovable.dev/projects/2193507e-9459-42c9-a1db-f42316bad72c) and click on Share -> Publish.
+2️⃣ Planning Phase
 
-## Can I connect a custom domain to my Lovable project?
+Prompt Parsing
+	•	Converts unstructured user input into a standardized format (e.g., JSON)
+	•	Extracts:
+	•	Task type
+	•	Dataset characteristics
+	•	Evaluation metrics
+	•	Constraints
 
-Yes, you can!
+Retrieval-Augmented Planning (RAP)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This stage combines:
+	•	External knowledge sources
+	•	APIs
+	•	Prior solutions
+	•	Best practices
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The planner generates multiple candidate execution plans.
+
+External Resources
+	•	ML documentation
+	•	API references
+	•	Pretrained model metadata
+	•	Research knowledge bases
+
+⸻
+
+3️⃣ Execution Phase (Parallelizable)
+
+Execution is distributed across multiple agents, each responsible for a specific ML function.
+
+⸻
+
+🧩 Data Agent – Pseudo Data Analysis
+
+Responsible for:
+	•	Data retrieval
+	•	Preprocessing strategy selection
+	•	Exploratory analysis
+	•	Feature handling logic
+
+Modules:
+
+- Retrieval
+- Preprocessing
+- Analysis
+
+
+⸻
+
+🤖 Model Agent – Training-Free Model Search & HPO
+
+Instead of brute-force training:
+	•	Searches model architectures
+	•	Applies hyperparameter optimization
+	•	Profiles performance
+	•	Ranks candidates
+
+Modules:
+
+- Model Retrieval / Design
+- Hyperparameter Optimization (HPO)
+- Profiling
+- Ranking
+
+
+⸻
+
+⚙️ Operation Agent – Plan Implementation
+
+Responsible for:
+	•	Code generation
+	•	Pipeline assembly
+	•	Runtime debugging
+	•	Error recovery
+
+Output:
+	•	Full pipeline skeleton code
+	•	Executable ML workflow
+
+⸻
+
+4️⃣ Multi-Stage Verification
+
+Verification is not optional. It is enforced at every critical step.
+
+a) Implementation Verification
+
+Checks:
+	•	Logical correctness
+	•	Constraint compliance
+	•	Pipeline completeness
+
+b) Execution Verification
+
+Checks:
+	•	Runtime errors
+	•	Performance feasibility
+	•	Output validity
+
+c) Solution Summary
+	•	Final validated solution
+	•	Key decisions explained
+	•	Performance expectations stated
+
+✅ Pass → Deployable Model
+❌ Fail → Feedback Loop & Re-planning
+
+⸻
+
+📦 Final Output
+
+The system outputs:
+	•	Deployable ML model
+	•	Complete pipeline code
+	•	Configuration files
+	•	Execution summary
+
+Designed to be:
+	•	Reproducible
+	•	Interpretable
+	•	Production-ready
+
+⸻
+
+🔁 Feedback & Failure Handling
+
+Failures can occur at:
+	•	Request verification
+	•	Planning
+	•	Execution
+	•	Verification stages
+
+Each failure:
+	•	Is logged
+	•	Triggers agent feedback
+	•	Results in plan refinement or rejection
+
+⸻
+
+🛠️ Technology Stack (To Be Updated)
+
+Frontend:
+
+Add details later
+
+Backend:
+
+Add details later
+
+ML / AI Components:
+
+Add details later
+
+External APIs / Resources:
+
+Add details later
+
+⸻
+
+📌 Key Contributions
+	•	Agent-based ML pipeline automation
+	•	Retrieval-augmented planning
+	•	Training-free model selection
+	•	Multi-stage verification framework
+	•	End-to-end automation with safety checks
+
+⸻
+
+⚠️ Disclaimer
+
+This project is a research-oriented implementation and not an official AutoML framework release.
+Architecture and behavior may evolve as experimentation progresses.
+
+⸻
